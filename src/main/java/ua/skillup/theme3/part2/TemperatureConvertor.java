@@ -23,8 +23,10 @@ public class TemperatureConvertor {
 
         if (scale == "C") {
             System.out.println("Temperature in F: " +  convertCelsiusToFahrenheit(temperature));
-        } else {
+        } else if (scale == "F") {
             System.out.println("Temperature in C: " +  convertFahrenheitToCelsius(temperature));
+        } else {
+            System.out.println("Invalid scale, exiting...");
         }
     }
 

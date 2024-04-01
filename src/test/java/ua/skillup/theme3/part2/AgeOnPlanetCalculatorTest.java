@@ -4,6 +4,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertThrows;
 
 public class AgeOnPlanetCalculatorTest {
 
@@ -17,12 +18,26 @@ public class AgeOnPlanetCalculatorTest {
                 {1, "Saturn", 0.03395874243713337},
                 {1, "Uranus", 0.011902374911812329},
                 {1, "Neptune", 0.006068280780808115},
-                {1, "Unknown", -1}};
+        };
     }
 
     @Test(dataProvider = "ageForPlanets")
     public void testCalculateAgeOnPlanet(int age, String planet, double expected) {
         double result = AgeOnPlanetCalculator.calculateAgeOnPlanet(age, planet);
         assertEquals(result, expected);
+    }
+
+    @Test
+    public void testInvalidAge() {
+        int age = -1;
+        String planet = "Mercury";
+        assertThrows(IllegalArgumentException.class, () -> AgeOnPlanetCalculator.calculateAgeOnPlanet(age, planet));
+    }
+
+    @Test
+    public void testInvalidPlanet() {
+        int age = 1;
+        String planet = "Pluto";
+        assertThrows(IllegalArgumentException.class, () -> AgeOnPlanetCalculator.calculateAgeOnPlanet(age, planet));
     }
 }

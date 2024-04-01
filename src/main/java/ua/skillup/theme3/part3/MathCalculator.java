@@ -1,8 +1,17 @@
 package ua.skillup.theme3.part3;
 
 public class MathCalculator {
+    private static void checkIsPositive(int n) {
+        if (n <= 0) {
+            throw new IllegalArgumentException("Input number should be positive");
+        }
+    }
+
     public static int sumPositiveNumbersToN(int n) {
-        // Consider 0 as a positive number
+        if (n < 0) {
+            throw new IllegalArgumentException("Input number should not be negative");
+        }
+
         int sum = 0;
         for (int i = 1; i <= n; i++) {
             sum += i;
@@ -11,6 +20,8 @@ public class MathCalculator {
     }
 
     public static int factorial(int n) {
+        checkIsPositive(n);
+
         int factorial = 1;
         for (int i = 1; i <= n; i++) {
             factorial *= i;
@@ -19,13 +30,14 @@ public class MathCalculator {
     }
 
     public static boolean isPrime(int n) {
-        // Consider 1 and negative numbers as non-prime
+        checkIsPositive(n);
 
-        if (n <= 1) {
+        // Consider 0 and 1 as non-prime
+        if (n == 0 || n == 1) {
             return false;
         }
 
-        for (int i = 2; i < n; i++) {
+        for (int i = 2; i < Math.sqrt(n); i++) {
             if (n % i == 0) {
                 return false;
             }
@@ -34,6 +46,8 @@ public class MathCalculator {
     }
 
     public static boolean isArmstrongNumber(int n) {
+        checkIsPositive(n);
+
         int sum = 0;
         int original = n;
         int digits = 0;
@@ -51,6 +65,10 @@ public class MathCalculator {
     }
 
     public static void printFibonacciNumbers(int n) {
+        if(n < 2) {
+            throw new IllegalArgumentException("Input number should be greater than 1");
+        }
+
         int first = 0;
         int second = 1;
         System.out.println(first);
@@ -64,6 +82,8 @@ public class MathCalculator {
     }
 
     public static void printDigitsReversed(int n) {
+        checkIsPositive(n);
+
         // Use System.out.print() to print the digits without new line
         while (n > 0) {
             int digit = n % 10;

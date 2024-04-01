@@ -2,8 +2,7 @@ package ua.skillup.theme3.part4;
 
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotEquals;
+import static org.testng.Assert.*;
 
 public class IntArrayOperationsTest {
     @Test
@@ -153,5 +152,11 @@ public class IntArrayOperationsTest {
     public void testBinarySearchForEmptyArray() {
         int[] array1 = {};
         assertEquals(IntArrayOperations.binarySearch(array1, 6), -1);
+    }
+
+    @Test
+    public void testBinarySearchForNotSortedElement() {
+        int[] array1 = {3, 2, 1};
+        assertThrows(IllegalArgumentException.class, () -> IntArrayOperations.binarySearch(array1, 1));
     }
 }
