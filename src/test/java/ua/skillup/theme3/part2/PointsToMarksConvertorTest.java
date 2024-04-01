@@ -4,6 +4,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertThrows;
 
 public class PointsToMarksConvertorTest {
 
@@ -21,5 +22,17 @@ public class PointsToMarksConvertorTest {
     @Test(dataProvider = "pointsAndMarks")
     public void testMarksCalculator(int mark, char expected) {
         assertEquals(PointsToMarksConvertor.convertPointsToMarks(mark), expected);
+    }
+
+    @Test
+    public void testInvalidPoints() {
+        int points = -1;
+        assertThrows(IllegalArgumentException.class, () -> PointsToMarksConvertor.convertPointsToMarks(points));
+    }
+
+    @Test
+    public void testTooBigPoints() {
+        int points = 101;
+        assertThrows(IllegalArgumentException.class, () -> PointsToMarksConvertor.convertPointsToMarks(points));
     }
 }

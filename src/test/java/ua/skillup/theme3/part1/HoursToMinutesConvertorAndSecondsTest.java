@@ -3,6 +3,7 @@ package ua.skillup.theme3.part1;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertThrows;
 
 public class HoursToMinutesConvertorAndSecondsTest {
     @Test
@@ -19,5 +20,17 @@ public class HoursToMinutesConvertorAndSecondsTest {
         int expected = 3600;
         int result = HoursToMinutesConvertor.convertHoursToSeconds(hours);
         assertEquals(result, expected);
+    }
+
+    @Test
+    public void testInvalidMinutes() {
+        int minutes = -1;
+        assertThrows(IllegalArgumentException.class, () -> HoursToMinutesConvertor.convertHoursToSeconds(minutes));
+    }
+
+    @Test
+    public void testInvalidSeconds() {
+        int seconds = -1;
+        assertThrows(IllegalArgumentException.class, () -> HoursToMinutesConvertor.convertHoursToSeconds(seconds));
     }
 }

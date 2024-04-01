@@ -9,7 +9,7 @@ public class IntArrayOperations {
     }
 
     public static int max(int[] array) {
-        if(array.length == 0) {
+        if (array.length == 0) {
             return 0;
         }
 
@@ -23,7 +23,7 @@ public class IntArrayOperations {
     }
 
     public static int min(int[] array) {
-        if(array.length == 0) {
+        if (array.length == 0) {
             return 0;
         }
 
@@ -44,8 +44,9 @@ public class IntArrayOperations {
         }
         return sum;
     }
+
     public static int avg(int[] array) {
-        if(array.length == 0) {
+        if (array.length == 0) {
             return 0;
         }
         return sum(array) / array.length;
@@ -117,7 +118,25 @@ public class IntArrayOperations {
         return merged;
     }
 
-    public static int binarySearch (int[] array, int value) {
+    public static boolean isSorted(int[] array) {
+        if (array.length < 2) {
+            return true;
+        }
+
+        for (int i = 0; i < array.length - 1; i++) {
+            if (array[i] > array[i + 1]) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public static int binarySearch(int[] array, int value) {
+        if (!isSorted(array)) {
+            throw new IllegalArgumentException("Array should be sorted in ascending order");
+        }
+
         int left = 0;
         int right = array.length - 1;
         while (left <= right) {
