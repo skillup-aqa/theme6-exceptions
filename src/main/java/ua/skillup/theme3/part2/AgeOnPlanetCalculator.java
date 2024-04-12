@@ -3,19 +3,37 @@ package ua.skillup.theme3.part2;
 public class AgeOnPlanetCalculator {
     public static double calculateAgeOnPlanet(int ageInYears, String planet) {
         // If the planet is not in the list, return -1
-        return switch (planet) {
-            case "Mercury" -> ageInYears / 0.2408467;
-            case "Venus" -> ageInYears / 0.61519726;
-            case "Mars" -> ageInYears / 1.8808158;
-            case "Jupiter" -> ageInYears / 11.862615;
-            case "Saturn" -> ageInYears / 29.447498;
-            case "Uranus" -> ageInYears / 84.016846;
-            case "Neptune" -> ageInYears / 164.79132;
-            default -> {
-                System.out.println("Unknown planet: " + planet);
-                yield -1;
-            }
-        };
+        double age;
+        switch (planet) {
+            case "Mercury":
+                age = ageInYears / 0.2408467;
+                break;
+            case "Venus":
+                age = ageInYears / 0.61519726;
+                break;
+            case "Earth":
+                age = ageInYears;
+                break;
+            case "Mars":
+                age = ageInYears / 1.8808158;
+                break;
+            case "Jupiter":
+                age = ageInYears / 11.862615;
+                break;
+            case "Saturn":
+                age = ageInYears / 29.447498;
+                break;
+            case "Uranus":
+                age = ageInYears / 84.016846;
+                break;
+            case "Neptune":
+                age = ageInYears / 164.79132;
+                break;
+            default:
+                age = -1;
+        }
+
+        return age;
     }
 
     public static void main(String[] args) {
