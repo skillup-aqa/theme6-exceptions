@@ -3,6 +3,9 @@ package ua.skillup.theme3.part2;
 public class AgeOnPlanetCalculator {
     public static double calculateAgeOnPlanet(int ageInYears, String planet) {
         // If the planet is not in the list, return -1
+        if (ageInYears < 0) {
+            throw new IllegalArgumentException("Age can't be less than 0");
+        }
         double age;
         switch (planet) {
             case "Mercury":
@@ -30,7 +33,7 @@ public class AgeOnPlanetCalculator {
                 age = ageInYears / 164.79132;
                 break;
             default:
-                age = -1;
+                throw new IllegalArgumentException("Unknown planet: " + planet);
         }
 
         return age;
