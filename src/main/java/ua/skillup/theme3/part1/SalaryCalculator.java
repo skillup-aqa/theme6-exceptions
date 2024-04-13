@@ -2,6 +2,12 @@ package ua.skillup.theme3.part1;
 
 public class SalaryCalculator {
     public static double calculateSalaryBeforeTaxes(double hoursPerMonth, double hourlyRate) {
+        if (hoursPerMonth < 0) {
+            throw new IllegalArgumentException("Hours can't be less than 0");
+        }
+        if (hourlyRate < 0) {
+            throw new IllegalArgumentException("Hourly Rate can't be less than 0");
+        }
         return hoursPerMonth * hourlyRate;
     }
 
