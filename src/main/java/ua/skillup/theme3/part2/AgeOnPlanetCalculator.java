@@ -19,14 +19,14 @@ public class AgeOnPlanetCalculator {
             break;
             case "Neptune" : age =  ageInYears / 164.79132;
             break;
-            default : age = -1;
+            default: throw new IllegalArgumentException("Unknown planet present: " + planet);
             }
             return age;
         }
 
     public static void main(String[] args) {
         int ageInYears = 1;
-        String planet = "Mars";
+        String planet = "uuu";
         double result = calculateAgeOnPlanet(ageInYears, planet);
         System.out.println(result);
     }
