@@ -2,6 +2,10 @@ package ua.skillup.theme3.part3;
 
 public class CollatzConjectureTester {
     public static int collatzConjecture(int n) {
+        if(n < 1) {
+            return -1;
+        }
+
         int steps = 0;
         while (n != 1) {
             if (n % 2 == 0) {
