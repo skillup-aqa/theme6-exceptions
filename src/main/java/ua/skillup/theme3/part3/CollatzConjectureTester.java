@@ -2,7 +2,7 @@ package ua.skillup.theme3.part3;
 
 public class CollatzConjectureTester {
     public static int collatzConjecture(int n) {
-        if (n < 0) {
+        if (n <= 0) {
             throw new IllegalArgumentException("The entered number can't be less than 0");
         }
         int steps = 0;
@@ -18,7 +18,7 @@ public class CollatzConjectureTester {
     }
 
     public static void main(String[] args) {
-        int n = 6;
+        int n = 0;
         int result = collatzConjecture(n);
         System.out.println(result);
     }
