@@ -25,7 +25,7 @@ public class AgeOnPlanetCalculator {
         }
 
     public static void main(String[] args) {
-        int ageInYears = 1;
+        int ageInYears = 10;
         String planet = "R2D2";
         double result = calculateAgeOnPlanet(ageInYears, planet);
         System.out.println(result);
