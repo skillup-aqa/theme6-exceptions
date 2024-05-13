@@ -3,7 +3,7 @@ package ua.skillup.theme3.part3;
 public class CollatzConjectureTester {
     public static int collatzConjecture(int n) {
         if (n <= 0) {
-            throw new IllegalArgumentException("The entered number can't be less than 0");
+            throw new IllegalArgumentException("The entered number should be greater than 0");
         }
         int steps = 0;
         while (n != 1) {
